@@ -1,0 +1,39 @@
+<%- include('./partials/navigation') %>
+
+<section>    
+    <div class="my-reg-grid">
+          <div class="form-center my-shadow">
+                 <div class="my-gap">
+                 <%- include ('./partials/messages') %>
+                 </div>
+            <form class="my-margin" action="/auth/login" method="POST">
+              <!-- email -->
+         
+                <input
+                  type="email"
+                  class="my-input"
+                  id="inputEmail"
+                  name="email"
+                  placeholder="email"
+                />
+                <input
+                  type="password"
+                  class="my-input"
+                  id="password"
+                  name="password"
+                  placeholder="password"
+                />
+           
+                <button type="submit" class="submit-btn" style="width: 100%">
+                  Log in
+                </button>
+              
+            </form>
+
+
+               <p class="reg-link"> forgot password?  click <a href="/auth/forgot" >Reset</a> Password</p>
+               <p class="reg-link"> To Create account click <a href="/auth/register" >here</a></p>
+  
+          </div>
+    </div>
+</section>
