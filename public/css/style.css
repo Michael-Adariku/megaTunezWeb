@@ -15,7 +15,10 @@
 }
 .my-shadow{
     
-    border: 1px solid rgba(0, 0, 0, .07);
+    border: 1px solid rgba(185, 184, 184, 0.7);
+}
+.my-alert{
+    color:rgb(245, 46, 46);
 }
 .submit-btn{
     border: 1px solid #29323c;
@@ -25,6 +28,9 @@
     color: #fff;
     margin-bottom: 10px;
 }
+.submit-btn:focus{
+    outline: none;
+}
 .my-reg-grid {
     display:flex;
     justify-content: center;
@@ -33,6 +39,7 @@
 .form-center {
     margin: 200px auto;
     padding: 20px 30px;
+    width: 500px;
 }
 .my-input{
     width: 100%;

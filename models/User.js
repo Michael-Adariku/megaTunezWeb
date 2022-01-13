@@ -6,10 +6,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  lname: {
-    type: String,
-    required: true
-  },
+
   email: {
     type: String,
     required: true
@@ -18,18 +15,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  state: {
-    type: String,
-    required: true
-  },
-  lga: {
-    type: String,
-    required: true
-  },
-  category: {
-    type: String,
-    required: true
-  },
+
   verified: {
     type: Boolean,
     default: false

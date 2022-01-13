@@ -12,30 +12,26 @@ const User = require('../models/User');
 
 // Register Handle
 exports.registerHandle = (req, res) => {
-    const { name, email, password, password2,state,lga,category,checkbox,lname } = req.body;
+    const { name, email, password, password2 } = req.body;
     let errors = [];
     console.log(req.body)
-    console.log("this is the check box status:  " + checkbox)
     
     // Checking required fields
-    if (!name || !email || !password || !password2 || !state || !lga || !category || !lname) {
+    if (!name || !email || !password || !password2 ) {
         errors.push({ msg: 'Please enter all fields' });
     }
 
     // Checking password mismatch
     if (password != password2) {
-        errors.push({ msg: 'Passwords do not match' });
+        errors.push({ msg: 'Passwords do not match...' });
     }
 
     // Checking password
     if (password.length < 8) {
-        errors.push({ msg: 'Password must be at least 8 characters' });
+        errors.push({ msg: 'Password must be at least 8 characters...' });
     }
     if (password.search(/[a-z]/i) < 0) {
-        errors.push({msg: 'Your password must contain at least one letter.'});
-    }
-    if(checkbox == undefined) {
-        errors.push({msg: "agree with terms and conditions"});
+        errors.push({msg: 'Your password must contain at least one letter...'});
     }
     
 
@@ -43,13 +39,8 @@ exports.registerHandle = (req, res) => {
         res.render('register', {
             errors,
             name,
-            lname,
             email,
-            password,
-            password2,
-            state,
-            lga,
-            category
+            password
         });
     } else {
         // Validation passed 
@@ -60,12 +51,9 @@ exports.registerHandle = (req, res) => {
                 res.render('register', {
                     errors,
                     name,
-                    lname,
+                    email,
                     password,
-                    password2,
-                    state,
-                    lga,
-                    category
+
                 });
             } else {
 
@@ -80,7 +68,7 @@ exports.registerHandle = (req, res) => {
                 });
                 const accessToken = oauth2Client.getAccessToken()
 
-                const token = jwt.sign({ name, lname, email, password, state,lga, category}, JWT_KEY, { expiresIn: '30m' });
+                const token = jwt.sign({ name, email, password}, JWT_KEY, { expiresIn: '30m' });
                 const CLIENT_URL = 'http://' + req.headers.host;
 
                 const output = `
@@ -148,8 +136,7 @@ exports.activateHandle = (req, res) => {
                 res.redirect('/auth/register');
             }
             else {
-                const { name,lname,  email, password, state,
-                    lga, category} = decodedToken;
+                const { name, email, password} = decodedToken;
                 User.findOne({ email: email }).then(user => {
                     if (user) {
                         // User already exists
@@ -161,12 +148,8 @@ exports.activateHandle = (req, res) => {
                     } else {
                         const newUser = new User({
                             name,
-                            lname,
                             email,
-                            password,
-                            state,
-                            lga,
-                            category
+                            password
                         });
 
                         bcryptjs.genSalt(10, (err, salt) => {

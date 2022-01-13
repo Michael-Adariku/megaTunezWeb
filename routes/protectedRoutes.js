@@ -4,20 +4,25 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/checkAu
 
 
 router.get('/beats', ensureAuthenticated, (req, res) => res.render('./protected-pages/beat-protected', {
-  title: 'beat'
+  title: 'beat',
+  name: req.user.name
 }));
 
 router.get('/samples', ensureAuthenticated, (req, res) => res.render('./protected-pages/samples-protected', {
   title: 'Purchase Beat'
+  ,
+  name: req.user.name
 }));
 
 router.get('/tutorial',ensureAuthenticated, (req, res) => res.render('./protected-pages/tutorials-protected', {
-  title: 'Tutorial'
+  title: 'Tutorial',
+  name: req.user.name
 }));
 
 
 router.get('/contact',ensureAuthenticated, (req, res) => res.render('./protected-pages/contact-protected', {
-  title: 'Contact us'
+  title: 'Contact us',
+  name: req.user.name
 }));
 
   
