@@ -35,7 +35,7 @@ router.get('/tutorial',forwardAuthenticated,(req, res) => res.render('tutorials'
   title: 'My Tutorials'
 }));
 
-router.get('/blog',forwardAuthenticated,(req, res) => res.render('blog', {
+router.get('/blog',(req, res) => res.render('blog', {
   title: 'My blog'
 }));
 
