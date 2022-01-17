@@ -5,7 +5,7 @@
     
     position: relative;
     width: 100%;
-    padding: 45px 0;
+    
 }
 
 .playlist .section-header {
@@ -17,6 +17,7 @@
     position: relative;
     height: 100%;
     max-width: 100%;
+    margin-top: 140px;
   }
   
   .playlist .playlist-img img {
@@ -34,14 +35,7 @@
   height: 500px;
   width: 900px;
 }
-.trackbar {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    border-radius: 5px;
-    height: 50px;
-    color: #dddddd;
-  
-}
+
 button{
     padding: 10px 14px;
     border-bottom: 1px solid #092a49;
@@ -53,7 +47,15 @@ button{
 button:focus {
     outline: none;
     border: none;
-    padding: 10px 15px;
+ 
+}
+.trackbar {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    height: 50px;
+    color: #513838;
+  
 }
 .trackbar:nth-child(even) {
   background: #fcfff35b;
@@ -74,10 +76,10 @@ button:focus {
 }
 .trackname {
   float: left;
-  color: #f28886;
+  color: #333;
   margin: 12px 0px 0px 14px;
   font-size: 20px;
-  font-weight: bold;
+  
 }
 /*******************************/
 .dark-bg {
