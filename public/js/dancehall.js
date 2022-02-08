@@ -11,6 +11,7 @@ function audioApp(){
 	var is_playing = false;
 	var playingtrack;
 	var trackbox = _("dancehall");
+	var purchaseBtnArea = _('purchaseBtn')
 	var tracks = {
 	    "track1":["Black Coffee sing version", "Black_Coffee_sing_version"],
 		"track2":["EVOL song (Prod_by_Mega_Tunez)", "EVOL_song_(Prod_by_Mega_Tunez)"],
@@ -20,17 +21,35 @@ function audioApp(){
 		var tb = document.createElement("div");
 		var pb = document.createElement("button");
 		var tn = document.createElement("div");
+		var buyBtn = document.createElement('button');
+		 // Create anchor element.
+		 var a = document.createElement('a'); 
+		 // Create the text node for anchor element.
+		 var link = document.createTextNode("Subscribe");
+		 // Append the text node to anchor element.
+		 a.appendChild(link); 
+		 // Set the title.
+		 a.title = "Click to subscribe"; 
+		 // Set the href property.
+		 a.href = "/"; 
+		 // Append the anchor element to the body.
+		//  document.body.appendChild(a);
+		buyBtn.appendChild(a)
+
+		 
 		tb.className = "trackbar";
 		pb.className = "playbutton";
-		
 		tn.className = "trackname";
+		buyBtn.className= 'buybutton'
 		tn.innerHTML = audio_index+". "+tracks[track][0];
 		pb.id = tracks[track][1];
 		pb.addEventListener("click", switchTrack);
 		tb.appendChild(pb);
 		tb.appendChild(tn);
-		trackbox.appendChild(tb);
+		// tb.appendChild(buyBtn)
+		trackbox.appendChild(tb).appendChild(buyBtn);
 		audio_index++;
+	
 	}
 	audio.addEventListener("ended",function(){
 	    _(playingtrack).style.background = "url(/img/icons/play.png)";

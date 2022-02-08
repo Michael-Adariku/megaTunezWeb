@@ -20,15 +20,32 @@ function audioApp(){
 		var tb = document.createElement("div");
 		var pb = document.createElement("button");
 		var tn = document.createElement("div");
+		var buyBtn = document.createElement('button');
+		 // Create anchor element.
+		 var a = document.createElement('a'); 
+		 // Create the text node for anchor element.
+		 var link = document.createTextNode("Subscribe");
+		 // Append the text node to anchor element.
+		 a.appendChild(link); 
+		 // Set the title.
+		 a.title = "cick to subscribe"; 
+		 // Set the href property.
+		 a.href = "/"; 
+		 // Append the anchor element to the body.
+		//  document.body.appendChild(a);
+		buyBtn.appendChild(a)
+
+		 
 		tb.className = "trackbar";
 		pb.className = "playbutton";
-		
 		tn.className = "trackname";
+		buyBtn.className= 'buybutton'
 		tn.innerHTML = audio_index+". "+tracks[track][0];
 		pb.id = tracks[track][1];
 		pb.addEventListener("click", switchTrack);
 		tb.appendChild(pb);
 		tb.appendChild(tn);
+		tb.appendChild(buyBtn)
 		trackbox.appendChild(tb);
 		audio_index++;
 	}

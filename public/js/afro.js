@@ -10,7 +10,9 @@ function audioApp(){
 	var audio_index = 1;
 	var is_playing = false;
 	var playingtrack;
-	var trackbox = _("afro");
+	// var trackbox = _("afro");
+	var trackbox = _("trackName");
+	var purchaseBtnArea = _('purchaseBtn')
 	var tracks = {
 	    "track1":["Africa Casonova", "Africa_casonova_ads"],
 		"track2":["play rhythm", "play_rhythm"],
@@ -20,17 +22,33 @@ function audioApp(){
 		var tb = document.createElement("div");
 		var pb = document.createElement("button");
 		var tn = document.createElement("div");
+		var buyBtn = document.createElement('button');
+		 // Create anchor element.
+		 var a = document.createElement('a'); 
+		 // Create the text node for anchor element.
+		 var link = document.createTextNode("Subscribe");
+		 // Append the text node to anchor element.
+		 a.appendChild(link); 
+		 // Set the title.
+		 a.title = "Click to subscribe"; 
+		 // Set the href property.
+		 a.href = "/"; 
+		buyBtn.appendChild(a)
+
+		 
 		tb.className = "trackbar";
 		pb.className = "playbutton";
-		
 		tn.className = "trackname";
+		buyBtn.className= 'buybutton'
 		tn.innerHTML = audio_index+". "+tracks[track][0];
 		pb.id = tracks[track][1];
 		pb.addEventListener("click", switchTrack);
 		tb.appendChild(pb);
 		tb.appendChild(tn);
-		trackbox.appendChild(tb);
+		// tb.appendChild(buyBtn)
+		trackbox.appendChild(tb).appendChild(buyBtn);
 		audio_index++;
+	
 	}
 	audio.addEventListener("ended",function(){
 	    _(playingtrack).style.background = "url(/img/icons/play.png)";
